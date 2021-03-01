@@ -1,0 +1,35 @@
+.BuildControl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+    width: 500px;
+}
+
+.BuildControl .label {
+    width: 200px;
+    padding: 5px 10px;
+}
+
+.BuildControl button {
+    width: 100px;
+    outline: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.BuildControl button {
+    width: 100px;
+    outline: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+}
+
+.BuildControl .more {
+    background: #91ce50;
+}
+
+.BuildControl .less {
+    background: #7f3608;
+}
