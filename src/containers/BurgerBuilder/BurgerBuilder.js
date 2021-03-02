@@ -27,11 +27,27 @@ const BurgerBuilder = (props) => {
         Ingredients[type] = Ingredients[type] + 1;
 
         const oldPrice = burgerData.totalPrice;
-        console.log(oldPrice);
-        console.log(INGREDIENT_PRICE[type]);
         const AdditionalPrice = INGREDIENT_PRICE[type];
         let newPrice = oldPrice + AdditionalPrice;
-        console.log(newPrice);
+
+        setBurgerData({
+            ingredient: Ingredients,
+            totalPrice: newPrice
+        });
+    };
+
+    const removeIngredient = (type) => {
+        let Ingredients = {...burgerData.ingredient};
+
+        Ingredients[type] = Ingredients[type] - 1;
+
+        const oldPrice = burgerData.totalPrice;
+        const AdditionalPrice = INGREDIENT_PRICE[type];
+        let newPrice = oldPrice - AdditionalPrice;
+
+        if (Ingredients[type] < 0 || newPrice < 0) {
+            return;
+        }
 
         setBurgerData({
             ingredient: Ingredients,
@@ -42,8 +58,13 @@ const BurgerBuilder = (props) => {
     return (
         <Aux>
             <Burger ingredients={burgerData.ingredient}/>
-            <BuildControls addIngHandler={addIngredient}/>
-            <div>Price : {burgerData.totalPrice}</div>
+            <BuildControls
+                addIngHandler={addIngredient}
+                removeIngHandler={removeIngredient}
+                ingredientData={burgerData.ingredient}
+                totalPrice={burgerData.totalPrice}
+            />
+
         </Aux>
     );
 };

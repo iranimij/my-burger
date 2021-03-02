@@ -12,7 +12,16 @@ const BuildControls = ( props ) => {
 
     return (
         <div className={Classes.BuildControls}>
-            {ingredients.map( ing => <BuildControl key={ing.label} label={ing.label} addIngHandler={ () => props.addIngHandler(ing.type) }/>)}
+            <p>Total Price is : <strong>${props.totalPrice}</strong></p>
+            {ingredients.map( ing =>
+            <BuildControl
+                key={ing.label}
+                label={ing.label}
+                addIngHandler={ () => props.addIngHandler(ing.type) }
+                removeIngHandler={ () => props.removeIngHandler(ing.type) }
+                lessIsDisable={ props.ingredientData[ing.type] <= 0 }
+            />
+                )}
         </div>
     );
 };
